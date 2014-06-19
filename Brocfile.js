@@ -1,6 +1,7 @@
 /* global require, module */
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app'),
+  htmlmin = require('broccoli-htmlmin'),
   stripDebug = require('broccoli-strip-debug'),
   uncss = require('broccoli-uncss');
 
@@ -21,18 +22,15 @@ var app = new EmberApp();
 
 tree = app.toTree();
 
-
-var env = process.env.EMBER_ENV;
-if (env === 'production') {
+if (process.env.EMBER_ENV === 'production') {
 // UnCSS is making CSS *bigger*...wtf?!
 //  console.log('UN CSSing...');
 //  tree = uncss(tree, {
 //    html: ['http://winkler1.github.io/cache/'] // << what is this option exactly?
 //  });
 
-
-  console.log('stripping debug....');
-  tree = stripDebug(tree);
+  tree=stripDebug(tree);
+  tree=htmlmin(tree, {empty:true}); // KEEP empty attributes. https://github.com/Moveo/minimize
 }
 
 

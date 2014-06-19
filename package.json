@@ -28,6 +28,7 @@
     "ember-cli-ember-data": "0.0.4"
   },
   "dependencies": {
+    "broccoli-htmlmin": "^0.2.0",
     "broccoli-strip-debug": "^0.3.0",
     "broccoli-uncss": "^0.2.0"
   }
