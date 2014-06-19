@@ -1,5 +1,7 @@
 /* global require, module */
 
+// Closure Compiler caused Uncaught Error: Could not find module ember-hello/app..not using.
+
 var EmberApp = require('ember-cli/lib/broccoli/ember-app'),
   htmlmin = require('broccoli-htmlmin'),
   stripDebug = require('broccoli-strip-debug'),
@@ -29,8 +31,8 @@ if (process.env.EMBER_ENV === 'production') {
 //    html: ['http://winkler1.github.io/cache/'] // << what is this option exactly?
 //  });
 
-  tree=stripDebug(tree);
   tree=htmlmin(tree, {empty:true}); // KEEP empty attributes. https://github.com/Moveo/minimize
+  tree=stripDebug(tree);
 }
 
 
