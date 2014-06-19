@@ -1,6 +1,8 @@
 /* global require, module */
 
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var EmberApp = require('ember-cli/lib/broccoli/ember-app'),
+  stripDebug = require('broccoli-strip-debug'),
+  uncss = require('broccoli-uncss');
 
 var app = new EmberApp();
 
@@ -17,17 +19,20 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+tree = app.toTree();
 
-// ERROR: Object #<UncssFilter> has no method 'toTree'TypeError: Object #<UncssFilter> has no method 'toTree'
-if (false) {
-  var uncss = require('broccoli-uncss');
-  var env = process.env.EMBER_ENV;
-  if (env === 'production') {
-    app = uncss(app, {
-      html: ['http://winkler1.github.io/cache/']
-    });
-  }
+
+var env = process.env.EMBER_ENV;
+if (env === 'production') {
+  console.log('UN CSSing...');
+  tree = uncss(tree, {
+    html: ['http://winkler1.github.io/cache/'] // << what is this option exactly?
+  });
+
+
+  console.log('stripping debug....');
+  tree = stripDebug(tree);
 }
 
 
-module.exports = app.toTree();
+module.exports = tree;

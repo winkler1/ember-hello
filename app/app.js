@@ -11,4 +11,6 @@ var App = Ember.Application.extend({
 
 loadInitializers(App, 'ember-hello');
 
+console.log('Yo Dog..');
+
 export default App;
