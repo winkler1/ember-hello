@@ -2,7 +2,8 @@
 
 module.exports = function(environment) {
   var ENV = {
-    baseURL: '/',
+    environment: environment,
+    baseURL: '/cache/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
