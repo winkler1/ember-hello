@@ -17,4 +17,17 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+
+// ERROR: Object #<UncssFilter> has no method 'toTree'TypeError: Object #<UncssFilter> has no method 'toTree'
+if (false) {
+  var uncss = require('broccoli-uncss');
+  var env = process.env.EMBER_ENV;
+  if (env === 'production') {
+    app = uncss(app, {
+      html: ['http://winkler1.github.io/cache/']
+    });
+  }
+}
+
+
 module.exports = app.toTree();

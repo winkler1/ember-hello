@@ -26,5 +26,8 @@
     "glob": "^3.2.9",
     "ember-cli-ic-ajax": "0.0.3",
     "ember-cli-ember-data": "0.0.4"
+  },
+  "dependencies": {
+    "broccoli-uncss": "^0.2.0"
   }
 }
